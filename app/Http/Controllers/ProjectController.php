@@ -8,12 +8,10 @@ use App\Http\Resources\ProjectResource;
 use App\Models\Project;
 use App\Models\Workspace;
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
-    use AuthorizesRequests;
 
     public function index(Workspace $workspace)
     {

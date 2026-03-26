@@ -18,6 +18,7 @@ class WorkspaceResource extends JsonResource
             'id' =>  $this->id,
             'name' => $this->name,
             'owner_id' => $this->id,
+            'projects_count' => $this->projects()->count(),
         ];
     }
 }

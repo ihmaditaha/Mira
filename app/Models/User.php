@@ -55,7 +55,7 @@ class User extends Authenticatable
 
     public function workspaces()
     {
-        return $this->belongsToMany(workspace::class, 'workspace_user');
+        return $this->belongsToMany(Workspace::class, 'workspace_user');
     }
 
     public function tasks()

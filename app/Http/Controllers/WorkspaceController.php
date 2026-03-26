@@ -5,12 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Resources\WorkspaceResource;
 use App\Models\Workspace;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 
 class WorkspaceController extends Controller
 {
-    use AuthorizesRequests;
+    
     public function index()
     {
         $user = Auth::user();

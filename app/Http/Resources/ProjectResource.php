@@ -19,6 +19,7 @@ class ProjectResource extends JsonResource
             'workspace_id' => $this->workspace_id,
             'name' => $this->name,
             'description' => $this->description,
+            'tasks_count' => $this->tasks()->count(),
         ];
     }
 }

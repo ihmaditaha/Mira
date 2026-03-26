@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
-    use AuthorizesRequests;
     
     public function index(Project $project)
     {
