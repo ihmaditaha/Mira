@@ -8,19 +8,22 @@ use App\Http\Resources\ProjectResource;
 use App\Models\Project;
 use App\Models\Workspace;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
+    use AuthorizesRequests;
+
     public function index(Workspace $workspace)
     {
-        $this->authorize('view' , $workspace);
+        $this->authorize('view', $workspace);
         return $workspace->projects()->get();
     }
 
     public function store(StoreProjectRequest $request, Workspace $workspace)
     {
-        $this->authorize('create' , $workspace);
+        $this->authorize('create', $workspace);
 
         $project = $workspace->projects()->create([
             'name' => $request->name,
@@ -31,12 +34,12 @@ class ProjectController extends Controller
             'status' => 'success',
             'message' => 'created successfully',
             'project' => ProjectResource::make($project),
-        ],201);
+        ], 201);
     }
 
     public function show(Project $project)
     {
-        $this->authorize('view' , $project);
+        $this->authorize('view', $project);
         return ProjectResource::make($project);
     }
 
@@ -55,8 +58,8 @@ class ProjectController extends Controller
 
     public function destroy(Project $project)
     {
-        $this->authorize('delete',$project);
-        
+        $this->authorize('delete', $project);
+
         $project->delete();
 
         return response()->json([

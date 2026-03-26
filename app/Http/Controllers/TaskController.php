@@ -7,11 +7,13 @@ use App\Http\Requests\UpdateTaskRequest;
 use App\Http\Resources\TaskResources;
 use App\Models\Project;
 use App\Models\Task;
-use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
+    use AuthorizesRequests;
+    
     public function index(Project $project)
     {
         $this->authorize('view', $project);
